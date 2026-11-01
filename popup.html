@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимация RuAskerLand</title>
+    <style>
+        body {
+            width: 297px; /* Ширина окна равна ширине рамки */
+            height: auto; /* Высота будет автоматически подстраиваться */
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* Вертикальное расположение элементов */
+            align-items: center; /* Центрирование содержимого */
+            background-color: #000000;
+            overflow: hidden; /* Отключаем прокрутку */
+            font-family: Arial, sans-serif;
+            padding: 10px; /* Отступы внутри попапа */
+        }
+
+        .animation-area {
+            position: relative;
+            width: 290px; /* Ширина квадрата */
+            height: 144px; /* Высота квадрата */
+            border: 2px solid rgb(246, 178, 255); /* Цвет рамки */
+            border-radius: 15px; /* Закругленные углы */
+            background-color: #000000; /* Цвет фона квадрата */
+            overflow: hidden; /* Скрываем все, что выходит за границы */
+            margin-bottom: 20px; /* Отступ снизу для разделения */
+        }
+
+        .text {
+            position: absolute;
+            font-size: 24px; /* Размер шрифта */
+            font-weight: bold;
+            white-space: nowrap;
+            animation: moveText 6s linear infinite; /* Увеличена длительность анимации */
+        }
+
+        @keyframes horizontal {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: calc(100% - 124px);
+  }
+  100% {
+    left: 0%;
+  }
+}
+@keyframes vertical {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: calc(100% - 75px);
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.move {
+  position: absolute;
+  width: 130px;
+  height: 75px;
+  filter: invert(15%);
+  animation: horizontal 9s linear -31.5s infinite forwards, vertical 10s linear -0.7s infinite forwards;
+}
+
+        .content-area {
+            width: 290px; /* Ширина рамки с текстом */
+            border: 2px solid rgb(246, 178, 255); /* Цвет рамки */
+            border-radius: 15px; /* Закругленные углы */
+            padding: 10px; /* Отступы внутри рамки */
+            margin-bottom: 20px; /* Отступ снизу для разделения */
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #4CAF50; /* Цвет заголовка */
+            text-align: center; /* Центрирование заголовка */
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #d7d894;
+            margin-bottom: 15px; /* Отступ между параграфами */
+            text-align: center; /* Центрирование текста */
+        }
+        .strong{
+            color: hotpink;
+        }
+        .footer {
+            width: 290px; /* Ширина рамки футера */
+            border: 2px solid rgb(246, 178, 255); /* Цвет рамки */
+            border-radius: 15px; /* Закругленные углы */
+            padding: 10px; /* Отступы внутри рамки */
+            text-align: center; /* Центрирование текста футера */
+            color: #777; /* Цвет текста внизу */
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+    <div class="animation-area">
+        <div class="wrapper"><img class="move" src="assets/2025_03_07_10m_Kleki.png"/></div>
+    </div>
+
+    <div class="content-area">
+        <h1><ins>Спасибо за установку!</ins></h1>
+        <p>Дорогой пользователь,</p>
+        <p>Спасибо, что установили расширение <strong><ins>RuAskerLand</ins></strong>! Мы надеемся, что оно принесет вам много позитивных эмоций и удовольствия от использования наших "новых вкладок".</p>
+        <p>Если у вас есть какие-либо вопросы или предложения, не стесняйтесь обращаться к нам.</p>
+        <p>С наилучшими пожеланиями,<br>Команда <ins>RuAskerLand</ins></p>
+        <p>Кстати, мы так же не лишили тебя пасхалок. Они время от времени будут появляться.</p>
+        <p>Вот, например, одна из них:</p>
+        <p>Если в поисковую строку ввести <strong><ins>hesoyam</ins></strong>, то произойдет что-то интересное. Знатоки заценят!</p>
+        <p>Ах, да! анимация сверху это тоже своего рода Пасхал<ins>очка</ins>!) ну как говорится - "<ins>кто знает - тот поймет</ins>".</p>
+        <p>Другие пасхалки также существуют, если вы "шарите" успехов в <strong><ins>поиске</ins></strong>!</p>
+    </div>
+
+    <div class="footer">
+        <ins>© 2025 RuAskerLand. Все права защищены.</ins>
+    </div>
+</body>
+</html>

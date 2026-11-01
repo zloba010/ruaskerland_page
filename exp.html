@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экспресс-панель</title>
+    <style>
+      html {
+        border: 5px;
+        border-radius: 25px;
+        box-shadow: 1px 8px 6px 5px #000000ac;
+        cursor: url("https://cdn.glitch.global/1584c047-6111-4e8b-98d1-b725da2fb99f/cursor.png?v=1728243952305"), auto;
+               font-family: 'Mercury';
+       src: url('https://cdn.glitch.global/1584c047-6111-4e8b-98d1-b725da2fb99f/Mercury-AltBold.woff2?v=1724678453480') format('woff2'),url('https://cdn.glitch.global/1584c047-6111-4e8b-98d1-b725da2fb99f/Mercury-AltBold.woff?v=1724678435423') format('woff');
+
+        font-family: 'Mercury';
+      }
+
+      body {
+            font-family: Arial, sans-serif;
+    background-image: url('derevo.png');
+    background-repeat: repeat;
+    background-size: auto;
+          color: white;0
+        }
+        #toolbar {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            border: solid 6px;
+            border-radius: 15px;
+            border-color: black;
+        }
+        #tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            grid-gap: 25px 30px;
+          
+        }
+        .tab {
+            width: 155px;
+            height: 105px;
+            margin: 5px;
+            text-align: center;
+            cursor: pointer; 
+            border-radius: 25px;
+            border: 5px;
+            border-color: #f000;
+            font-size: 15px;
+            color:black;
+          box-shadow: 0px 9px 6px 5px #000000ad;
+          
+        }
+        .tab img {
+            width: 75px;
+            height: 65px;
+            margin-top: 5px;
+          border-radius: 5px;
+        }
+.editor {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    background: white;
+    border: 2px solid black;
+    padding: 15px;
+    z-index: 1000;
+    color: #333;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 50px;
+}
+      button#gotovo{
+        border-radius:25px;
+        border:solid black;
+        color:white;
+        background:green;
+      }     
+      button#gotovo:hover{
+        background:yellow;
+        color:black;
+      }
+      
+      #toolbar{
+        margin-top: 55px;
+      }
+                  #tabTitle{
+        margin-left:20%;
+      }
+      #tabColor{
+        margin-left:20%;
+      }
+            #tabIcon{
+        margin-left:20%;
+      }
+            #tabLink{
+        margin-left:20%;
+      }
+    </style>
+</head>
+ <body oncontextmenu="return false;">
+        
+  <h1>Экспресс-Панель</h1>
+
+<div id="toolbar">
+    <button onclick="toggleEditor()">✏️Создать новую вкладку✏️|</button>
+</div>
+
+<div class="editor" id="editor">
+    <h2>Редактирование закладок</h2>
+    <h5>(Учтите, после того как вкладка будет создана и добавлена - она редактированию уже не подлежит. В случае необходимости создайте новую.)</h5>
+  
+    <input type="text" id="tabTitle" placeholder="Введите Название заладки"> - Введите Название заладки<br>
+  <br>
+    <input type="color" id="tabColor"> - укажите цвет закладки<br>
+  <br>
+      <input type="file" id="tabIcon" accept="image/*"> - выберите свою иконку для закладки<br> 
+  <br>
+       <input type="url" id="tabLink" placeholder="https://epmty.site/"> - укажите ссылку на сайт или страницу<br>
+  <br>
+  <br>
+    <button id="gotovo" onclick="addTab()">Готово</button>
+  
+</div>
+
+<div id="tabs"></div>
+
+<script>
+    let tabs = JSON.parse(localStorage.getItem('tabs')) || [];
+
+    function toggleEditor() {
+        const editor = document.getElementById('editor');
+        editor.style.display = editor.style.display === 'none' || editor.style.display === '' ? 'block' : 'none';
+    }
+
+    function addTab() {
+        const title = document.getElementById('tabTitle').value;
+        const color = document.getElementById('tabColor').value;
+        const link = document.getElementById('tabLink').value;
+        const icon = document.getElementById('tabIcon').files[0];
+
+        if (title && link) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const tab = { title, color, link, icon: event.target.result };
+                tabs.push(tab);
+                localStorage.setItem('tabs', JSON.stringify(tabs));
+                renderTabs();
+            };
+            if (icon) {
+                reader.readAsDataURL(icon);
+            } else {
+                // Если иконка не загружена, добавляем вкладку без иконки
+                const tab = { title, color, link, icon: '' };
+                tabs.push(tab);
+                localStorage.setItem('tabs', JSON.stringify(tabs));
+                renderTabs();
+            }
+        }
+        clearEditor();
+    }
+
+    function clearEditor() {
+        document.getElementById('tabTitle').value = '';
+        document.getElementById('tabColor').value = '#ffffff';
+        document.getElementById('tabIcon').value = '';
+        document.getElementById('tabLink').value = '';
+    }
+
+    function renderTabs() {
+        const tabsContainer = document.getElementById('tabs');
+        tabsContainer.innerHTML = '';
+        tabs.forEach((tab, index) => {
+            const tabElement = document.createElement('div');
+            tabElement.className = 'tab';
+            tabElement.style.backgroundColor = tab.color;
+            tabElement.onclick = () => window.open(tab.link, '_parent');
+            tabElement.innerHTML = `
+                <img src="${tab.icon}" alt="Иконка" style="${tab.icon ? '' : 'display: none;'}">
+                <div>${tab.title}</div>
+                <button onclick="deleteTab(${index}); event.stopPropagation();">❌</button>
+            `;
+            tabsContainer.appendChild(tabElement);
+        });
+    }
+
+    function deleteTab(index) {
+        tabs.splice(index, 1);
+        localStorage.setItem('tabs', JSON.stringify(tabs));
+        renderTabs();
+    }
+
+    window.onload = renderTabs;
+</script>
+</body>
+</html>

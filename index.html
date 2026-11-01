@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="Ru" >
+<head>
+  <meta charset="UTF-8">
+<meta property="og:title" content="Ru Asker Land 2.5.2">
+<meta property="og:site_name" content="Russian express panel">
+<meta property="og:url" content="https://ruaskerland.glitch.me/">
+<meta property="og:description" content="Российская, комфортная и минималистичная стартовая страница для вашего браузера">
+<meta property="og:image" content="https://cdn.glitch.global/1584c047-6111-4e8b-98d1-b725da2fb99f/photo_2024-09-10_12-57-20.jpg?v=1725962267226">
+<meta property="og:image:width" content="968"/>
+<meta property="og:image:height" content="504"/>
+  <meta name="yandex-verification" content="3384ff2995e5973b" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RuAskerLand 2.5.2</title>
+  <link rel="manifest" href="webmanifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/1584c047-6111-4e8b-98d1-b725da2fb99f/favicon.png?v=1725959586985" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic|Playfair+Display:400,700&subset=latin,cyrillic">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+  </head> 
+  
+   <div class="preloader">
+    <figure>
+    <img src="logo.png">
+    <figcaption><div class="progress"></div><script>//helper function-> return <DOMelement>
+function elt(type, prop, ...childrens) {
+  let elem = document.createElement(type);
+  if (prop) Object.assign(elem, prop);
+  for (let child of childrens) {
+    if (typeof child == "string") elem.appendChild(document.createTextNode(child));
+    else elem.appendChild(elem);
+  }
+  return elem;
+}
+
+//Progress class
+class Progress {
+  constructor(now, min, max, options) {
+    this.dom = elt("div", {
+      className: "progress-bar"
+    });
+    this.min = min;
+    this.max = max;
+    this.intervalCode = 0;
+    this.now = now;
+    this.syncState();
+    if(options.parent){
+      document.querySelector(options.parent).appendChild(this.dom);
+    } 
+    else document.body.appendChild(this.dom)
+  }
+
+  syncState() {
+    this.dom.style.width = this.now + "%";
+  }
+
+  startTo(step, time) {
+    if (this.intervalCode !== 0) return;
+    this.intervalCode = setInterval(() => {
+      if (this.now + step > this.max) {
+        this.now = this.max;
+        this.syncState();
+        clearInterval(this.interval);
+        this.intervalCode = 0;
+        return;
+      }
+      this.now += step;
+      this.syncState()
+    }, time)
+  }
+  end() {
+    this.now = this.max;
+    clearInterval(this.intervalCode);
+    this.intervalCode = 0;
+    this.syncState();
+  }
+}
+
+
+let pb = new Progress(15, 0, 100, {parent : ".progress"});
+
+//arg1 -> step length
+//arg2 -> time(ms)
+pb.startTo(5, 500);
+
+//end to progress after 5s
+setTimeout( () => {
+  pb.end()
+}, 1300)</script>❤️️Мы рады тебе на Ru Asker Land❤️️!</figcaption>
+      </figure>
+  </div>
+
+  
+  
+  
+
+
+  
+  
+<input type="checkbox" id="nav-toggle" hidden>
+   <nav class="nav">
+     <label for="nav-toggle" class="nav-toggle" onclick></label>
+      <h2 class="logo"> 
+            <a href="https://ruaskerland.glitch.me/">RuAskerLand🔍</a>
+        <div class="service">
+          <br>
+            сервисы
+          </div>
+        </h2>
+        <ul>
+          <li><a href="https://yootv.ru/ctv.html">Российское ТВ Онлайн</a></li>
+          <li><a href="https://www.avito.ru/">Доски обьявлений Avito</a></li>
+            <li><a href="https://ru.wikipedia.org/">Википедия</a></li>
+            <li><a href="https://profi.ru/">Фриланс Профи.ру</a></li>
+            <li><a href="https://translate.yandex.ru/">Яндекс Переводчик</a></li>
+            <li><a href="https://pixlr.com/ru/editor/">Графический редактор Pixlr</a></li>
+            <li><a href="https://www.desmos.com/fourfunction?lang=ru">Калькулятор онлайн</a></li>
+            <li><a href="https://github.com/">GitHub</a></li>
+         <li><a href="https://www.wildberries.ru/">Wildberries</a></li>
+          <li><a href="https://www.ozon.ru/">Ozon</a></li>
+        </ul>
+    </nav>
+  <select class="selector" name="sbg" id="sbg">
+            <option value="settheme">Выбор Темы</option>
+            <option value="NightTheme">Ночная тема</option>
+            <option value="LightTheme">Светлая тема</option>
+        </select>
+        <script>
+            window.addEventListener("load", (event) => {
+                let bg = localStorage.getItem("selectedBG");
+                if(bg){
+                    setBG(bg);
+                }
+                else{
+                    setBG("bg1");
+                }
+ 
+                if(sbg){
+                    sbg.addEventListener('change', (event) => {
+                        localStorage.setItem("selectedBG", event.target.value);
+                        setBG(event.target.value);
+                    });
+                }
+            });
+            function setBG(bgi){
+                css = document.body.className;
+                cssBg = css.split(" ").pop();
+                document.body.className = document.body.className.replace(cssBg, bgi);
+            }
+        </script>  
+
+  <body oncontextmenu="return false;">
+
+     <div id="timeWidget">-- : --</div>
+    <style>
+        #timeWidget {
+            position: absolute;
+            top: -1px;
+            left: 41%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.50);
+            color: #ffffffd4;
+            padding: 1px 17px;
+            border-radius: 5px;
+            font-size: 24px;
+            opacity: 0.7;
+            transition: opacity 3s ease-in-out;
+            border: solid ;
+            border-radius: 0px 0px 15px 15px;
+            font-family: 'Mercury';
+            font-size: 35px;
+        }
+      #timeWidget:hover{
+            border-color: black;
+    background-color: yellow;
+        color:black;
+      }
+
+        .fade-in {
+            opacity: 0% {
+                opacity:0
+            }
+
+            50% {
+                opacity: .5
+            }
+
+            100% {
+                opacity: 1
+            }
+
+            ; </style>
+        <script>
+    let isFullscreen = false;
+
+    function updateTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const timeString = `${hours}:${minutes}`;
+        document.getElementById('timeWidget').textContent = timeString;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const widget = document.getElementById('timeWidget');
+        const speechSynthesis = window.speechSynthesis;
+
+        // Обработка одиночного клика
+widget.addEventListener('click', () => {
+widget.textContent = `>тык<`;
+});
+
+        // Обработка двойного клика
+// Функция для получения мужского голоса
+function getMaleVoice() {
+    const voices = speechSynthesis.getVoices();
+    return voices.find(voice => voice.gender === 'male');
+}
+
+// Обработчик двойного клика     
+widget.addEventListener('dblclick', () => {
+    // Получаем текущее время
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    
+    // Формируем текст для озвучивания
+    const text = `Сейчас ${hours} часов ${minutes} минут`;
+    
+    // Создаем объект для синтеза речи
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Получаем и устанавливаем мужской голос
+    const voice = getMaleVoice();
+    if (voice) {
+        utterance.voice = voice;
+    }
+    
+    // Запускаем озвучивание
+    speechSynthesis.speak(utterance);
+});
+      
+      //обработка тройного клика
+      let clickCount = 0;
+let lastClickTime = 0;
+const CLICK_DELAY = 300; // Максимальное время между кликами в миллисекундах
+const targetUrl = 'https://zloba010.github.io/Ruaskerland/time-is-dangerous.html'; // URL для перехода
+
+widget.addEventListener('click', (e) => {
+ const now = new Date().getTime();
+ 
+ // Проверяем, достаточно ли времени прошло с последнего клика
+ if (now - lastClickTime > CLICK_DELAY) {
+ clickCount = 1;
+ } else {
+ clickCount++;
+ }
+ 
+ lastClickTime = now;
+ 
+ // Если было 3 клика за заданное время
+ if (clickCount === 3) {
+ window.location.href = targetUrl;
+ clickCount = 0; // Сбрасываем счетчик
+ }
+});
+      
+        // Первоначальное обновление времени
+        updateTime();
+        setInterval(updateTime, 500);
+    });
+        </script>
+        
+
+
+    <a href="https://ruaskerland.glitch.me/setup/start.html" class="wrapper-setup"  target="_blank">
+
+      <div class="setup">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="30" height="30" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd">
+          <path d="M17.903 22.145c-.525-.021-.927-.058-1.032-.118.521-.901-.479-2.834-1.039-3.394-1.097-1.097-3.198-1.097-4.295 0-.681.681-.927.878-1.14 1.939-.087.435-.129 1.055.101 1.455-.376.217-4.331.13-4.64.069-.271-1.367.319-5.36-.347-6.026-.16-.16-.625-.321-.831-.32-.531.003-1.489.908-2.632-.234-1.268-1.268.018-3.46 1.732-3.012.239.062 1.09.605 1.731-.036.668-.668.073-4.641.347-6.026.322-.064 4.272-.144 4.64.069-.402.696-.04 2.315.554 2.909l.485.485c1.097 1.097 3.198 1.097 4.295 0 .714-.714 1.292-1.509 1.209-2.632-.017-.238-.053-.559-.17-.762.158-.091.953-.129 1.842-.137v-1.49h-1.496c-.509-.001-1.268-.083-1.732.381-.212.212-.32.594-.318.831.003.479.919 1.476-.236 2.632-1.2 1.199-3.448-.047-3.05-1.663.075-.302.264-.527.31-.831.211-1.369-1.364-1.352-1.97-1.35-1.02.001-4.631-.252-5.264.381-.922.922-.658 1.604-.658 3.047 0 .7.08 2.19-.035 2.771-.84-.487-3.004-.043-3.903 1.731-.202.4-.361 1.07-.361 1.455 0 .347.15 1.019.326 1.385.613 1.269 1.969 2.061 3.177 1.972.238-.018.559-.054.761-.171.278 1.402-.38 4.745.416 5.541.946.946 2.155.658 3.741.658 1.6 0 3.793.365 3.781-1.212-.003-.359-.193-.542-.3-.9-.49-1.632 1.804-2.957 3.029-1.732.479.479.673 1.188.556 1.663-.145.59-1.193 2.186 1.661 2.181.345 0 .988.028 1.712.042l-.957-1.551zm8.528-6.099h.882c.717 0 1.365.381 1.715 1.007.348.626.332 1.378-.044 1.987l-4.249 6.891c-.361.585-.985.933-1.672.933-.686 0-1.311-.348-1.671-.933l-4.25-6.891c-.376-.609-.392-1.361-.043-1.987.349-.626.998-1.007 1.715-1.007h.881V3.242c0-1.083.881-1.963 1.963-1.963h2.81c1.083 0 1.963.88 1.963 1.963v12.804zM21.113 3.242v13.677c0 .3-.245.545-.545.545h-1.754c-.203 0-.378.103-.477.28-.099.177-.094.379.012.552l4.25 6.891c.102.165.269.259.464.259s.362-.094.464-.259l4.25-6.891c.106-.173.111-.375.012-.552-.099-.177-.273-.28-.476-.28h-1.754c-.3 0-.546-.245-.546-.545V3.242c0-.3-.245-.545-.545-.545h-2.81c-.3 0-.545.245-.545.545zM16.222 25.13h.206c.282 0 .512.23.512.513v1.455c0 .282.231.513.514.513h10.802c.282 0 .513-.231.513-.513v-1.455c0-.283.23-.513.513-.513h.205c.282 0 .513.23.513.513v2.565c0 .283-.231.513-.513.513H16.222c-.282 0-.513-.23-.513-.513v-2.565c0-.283.231-.513.513-.513z"/>
+        </svg> -->
+    </div>
+    </a>
+    <div class="setup__title">
+      <p>Установить в качестве главной страницы</p>
+    </div>
+
+  
+
+    <!-- oncontextmenu="return false;"-->
+    <header>
+      <div class="container"> 
+        <div class="header__wrapper">
+          <div class="logo">
+            <span class="white">Ru</span>
+            <span class="blue">asker</span>
+            <span class="red">Land</span>
+          </div>
+        </div> 
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <form class="search_form" action="https://ya.ru/" method="GET">
+            <label class="visually-hidden" for="search">Наqти</label>
+            <input id="search" name="q" class="search" type="text" placeholder="что будем искать ?" autofocus>
+            <button class="search_btn" type="submit">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="20px" height="20px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewbox="0 0 20 20">
+                  <path class="search__icon-shape" d="M13.15 8.74c-0.38,2.69 -2.69,4.91 -5.83,4.49 -2.58,-0.35 -4.87,-2.71 -4.45,-5.82 0.35,-2.61 2.85,-4.88 5.81,-4.44 2.56,0.38 4.92,2.7 4.47,5.77zm-0.81 5.01c0.75,0.48 4.99,5.24 5.46,5.25 0.39,-0.11 1.15,-0.84 1.2,-1.28 -0.06,-0.34 -4.53,-4.52 -5.23,-5.37 0.16,-0.54 1.71,-2.12 1.3,-5.22 -0.76,-5.8 -7.98,-8.18 -12,-4.06 -5.11,5.22 0.02,13.75 6.97,11.78 1.42,-0.41 1.74,-0.89 2.3,-1.1z"/>
+                </svg>
+              </span>
+            </button>
+        </form>
+      </div>
+      
+    </main><dfn title="Экспресс-Панель"><button class="btn" type="button"></dfn>
+    <span>
+      <svg width="27px" height="27px" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect fill="none" height="7" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="2.5"/>
+      <rect fill="none" height="7" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="14.5"/>
+      <rect fill="none" height="7" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="2.5"/>
+      <rect fill="none" height="7" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="14.5"/>
+      </svg>
+    </span>
+  </button>
+  <div class="dm-overlay">
+      <div class="dm-cell">
+
+          <button class="close" id="close">
+            <span>
+              <svg width="32px" height="32px" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione" preserveaspectratio="xMidYMid meet"><path fill="#ff5a79" d="M62 10.6L53.4 2L32 23.4L10.6 2L2 10.6L23.4 32L2 53.4l8.6 8.6L32 40.6L53.4 62l8.6-8.6L40.6 32z"></path></svg>
+            </span>
+          </button>
+                <div id="content">
+                <object id="objj" type="text/html" data="exp.html" style="width: 100%; height: 100%; border-radius: 25px; background: black;"></object>
+            </div>
+        </div>
+    </div>
+
+<footer class="footer">
+  
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+ 

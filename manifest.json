@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "RuAskerland New Tab",
+  "version": "1.0",
+  "description": "This extension replaces the new tab page with a custom page.",
+  "key": "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDE5zAyOTaSuc7uJ+IN2fGpRB9+SiTF+2XLit0ALOgSZBXxJTkDDPe+flVTI1Sey+NHvqpYYEkE0OjBrTFBK8NAQ3wYKIwN7g8xDPUwKVgoi+26jMsj8xpNfCArkdVhHOclrWQSkPFqzAP2km3jPOa1Y3QOGss+wfeYTVipSYeGU8wudVmjRaCxgRdYnqC0NMgTotnkff89Np8AweK6Lc4vIS6rN6ePY2ELJAx32i8Fli4BRc6XVMzZJf9HR3irTiLJft1pevto7OhySOVVwfyZ6uc9VRWF+8nJ6J6Fv+fIpDwwaa/sQYW2hI9yjRih2qaNM8wnMm4KqLVZkOeaZ/rFAgMBAAECggEAH095T9iJNQvBkV1bikL93/dVNV/U49FLfp0LnNuHNmVz7RoI1tNZEebvlSjTwUHqrPNEuIjsaOJPdid0OEjH45As9ip8cDqgGndVBd432+VkXXsbUmbLPUcKVo36FayNlRAyuZZoIp4Og0cFnPzc3ZB9rpXUJpvxeJEpaBdT1agg2Kwf3HukpQjaI424gnf5VYsxNdf37pPlJZHQDRxcxYoX8qJqXwFWv0kCtERdKHDqP/J0eLa4T5GvxMVmGfsN0tKhn0af/fX8rmBFvEpC6W01FaxI+hfzpObxbDiyaZR5HPkSdSVEmPZeSVQqZiS7HOFetRo8Z8H4zb+PW3MMgQKBgQDl5Jmzv94hsB5KDQVw7pf4wKguPRbWo4JcLBul/aJDylIhnOi3LHrZSp550E5kMHvtjai9H5mN67YFrWF2y4xm99luv3xcWYXg3ycLI7MZa90i5TnC+a+ZGnOaY1Pu5ShDsmnhsrnV2w9VRvbya8wff1yfmRuZ9XQtndaQUI/xMwKBgQDbQ4NEM/T2eRAFlpthKMcZaFqrGrsxWTeTbvFujEoNn1WISe1G0ftiynwXTougVONKhLnp46xqiAyu5V2/mLgb52Ic/vNfRmmE+nIP/tT/x/3R5hds2yUSoS24dkih1v/3Rw0NSTFfMk/47t375xO8ut1PHVQ8lR0yMEFbFFTUJwKBgAvcKEXKrzYDtPxTAaXa2UI/Bi4kfqoiE1aX+/ErTZS7ulL7mlHg3JGbNOPJ6FFo4uvVdBAVskFNGL3gPPf49kxVmwUIoezNvYdlW8lKVTIJi4YCV2GEqhd28uHTIABiGBqt+KJpKwcqXvciSxkkkIpLcsbVCkR+EjlMPEaDsXlbAoGAItu527by49hdTrYh37Fu7cAkYf1u8yp+5maF5ZBSGZZSL8eo/FBXyd3tGnt3QTcdp3QwZlm2yHz2nzuByvsJkg4YEAoMQQJdtjFmvtpBnKR72sncwYaZfzu2nBPZ+jjHGtXl4k3Xlo3WHvpCulCDV8bRdklwYe1G5fq7+THjRpMCgYEAtzk2Ht+AZ3iLfL0UxPpQuy9IgtUVh6NHZuc8BCIXy/xgHmRBv0Gcx0kDO5Yzv3li+oxxAUP7EaY3Qij/MqUOa8J4zITTMTJ+GvVMyBg22Cg9m+YZX6jmP7TTWzL+9S6S/maIz0FhuFNgG20dMcOjWTzRbvwbdpnvrGnGp8pEYjY=",
+  "permissions": [
+    "notifications",
+    "tabs"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "icons": {
+    "16": "assets/Icoon.png",
+    "48": "assets/Icoon.png",
+    "128": "assets/Icoon.png"
+  },
+  "action": {
+    "default_icon": "assets/Icoon.png",
+    "default_popup": "popup.html"
+  },
+  "homepage_url": "https://ruaskerland/privacy-policy"
+}
